@@ -1,11 +1,16 @@
 package main.java.tipagemestatica;
 
-import java.awt.GridBagLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
-public class Main {
-    JFrame miJFrame = new JFrame("Cadastro de alunos");
+public class Main extends JFrame {
+    
+
+    public static void main(String[] args) {
+        Interface Interface = new Interface();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Interface.setVisible(true);
+            }
+        });
+    }
 }

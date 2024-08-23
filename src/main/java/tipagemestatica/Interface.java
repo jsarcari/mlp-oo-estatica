@@ -3,39 +3,42 @@ package main.java.tipagemestatica;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
-import java.text.ParseException;
 
 import javax.swing.GroupLayout;
 
 public class Interface extends JFrame {
 
-    private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+    private ArrayList<JTextField> listField = new ArrayList<JTextField>();
+    private Action action = new Action();
+
     public Interface() {
         initComponents();
     }
 
     private void initComponents() {
         nomeTextField = new JTextField();
+        listField.add(nomeTextField);
         nomeLabel = new JLabel();
         generoTextField = new JTextField();
+        listField.add(generoTextField);
         generoLabel = new JLabel();
         nascimentoTextField = new JTextField();
+        listField.add(nascimentoTextField);
         nascimentoLabel = new JLabel();
         matriculaTextField = new JTextField();
+        listField.add(matriculaTextField);
         matriculaLabel = new JLabel();
         nivelTextField = new JTextField();
+        listField.add(nivelTextField);
         nivelLabel = new JLabel();
         cadastrarButton = new JButton();
+        mensagemLabel = new JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
-                for (Aluno a : alunos) {
-                    System.out.println(a);
-                }
+                action.printAlunos();
                 System.exit(0);
             }
         });
@@ -44,19 +47,14 @@ public class Interface extends JFrame {
 
         nomeLabel.setText("Nome");
         generoLabel.setText("Gênero");
-        nascimentoLabel.setText("Data de nascimento");
+        nascimentoLabel.setText("Data de nascimento (dd/mm/aaaa)");
         matriculaLabel.setText("Código de matrícula");
         nivelLabel.setText("Nível");
         cadastrarButton.setText("Cadastrar");
+        mensagemLabel.setText("");
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    cadastrarButtonActionPerformed(evt);
-                    limparActionPerformed(evt);
-                } catch (ParseException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                action.cadastrarButtonActionPerformed(evt, listField, mensagemLabel);
             }
         });
 
@@ -87,8 +85,10 @@ public class Interface extends JFrame {
                         .addComponent(nivelLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nivelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup())
-                        .addComponent(cadastrarButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cadastrarButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mensagemLabel)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -119,37 +119,14 @@ public class Interface extends JFrame {
                     .addComponent(nivelLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cadastrarButton))
+                    .addComponent(cadastrarButton)
+                    .addComponent(mensagemLabel))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
     }
 
-    private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
-        Aluno aluno = new Aluno();
-        aluno.setNome(nomeTextField.getText());
-        aluno.setDt_nascimento(nascimentoTextField.getText());
-        aluno.setGenero(generoTextField.getText());
-        aluno.setMatricula(matriculaTextField.getText());
-        aluno.setNivel(nivelTextField.getText());
-        alunos.add(aluno);
-    }
-
-    public void limparActionPerformed(java.awt.event.ActionEvent evt) {
-        nomeTextField.setText("");
-        nascimentoTextField.setText("");
-        generoTextField.setText("");
-        matriculaTextField.setText("");
-        nivelTextField.setText("");
-    }
-
-    public void returnAlunos() {
-        for (Aluno a : alunos) {
-            System.out.println(a);
-        }
-    }
-
-    private javax.swing.JLabel nomeLabel, generoLabel, nascimentoLabel, matriculaLabel, nivelLabel;
+    private javax.swing.JLabel nomeLabel, generoLabel, nascimentoLabel, matriculaLabel, nivelLabel, mensagemLabel;
     private javax.swing.JButton cadastrarButton;
     private javax.swing.JTextField nomeTextField, generoTextField, nascimentoTextField, matriculaTextField, nivelTextField;
 }

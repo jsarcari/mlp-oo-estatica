@@ -1,7 +1,5 @@
 package main.java.tipagemestatica;
 
-import java.util.ArrayList;
-
 import java.text.DateFormat;
 
 public class Aluno extends Pessoa {
@@ -52,10 +50,5 @@ public class Aluno extends Pessoa {
 
     public final NIVEL getNivel() {
         return nivel;
-    }
-
-    public final ArrayList<Aluno> addAluno(ArrayList<Aluno> list, Aluno aluno) {
-        list.add(aluno);
-        return list;
     }
 }

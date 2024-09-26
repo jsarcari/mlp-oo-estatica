@@ -1,6 +1,8 @@
 package main.java.tipagemestatica;
 
 import java.text.DateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Aluno extends Pessoa {
     
@@ -28,7 +30,14 @@ public class Aluno extends Pessoa {
     }
 
     public final void setMatricula(String matricula) {
-        this.matricula = matricula;
+        String regex = "[0-9]+";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(matricula);
+        if (matricula.length() != 8 || !m.matches()) {
+            throw new MatriculaSemOitoDigitosException("Matrícula tem de ter 8 dígitos númericos.");
+        } else {
+            this.matricula = matricula;
+        }
     }
 
     public final String getMatricula() {

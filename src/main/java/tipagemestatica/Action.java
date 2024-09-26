@@ -27,6 +27,10 @@ public class Action {
             aluno.setNivel(listField.get(4).getText());
             alunos.add(aluno);
             limparActionPerformed(evt, listField, mensagemJLabel);
+        } catch (DataMaiorQueAtualException e) {
+            mensagemJLabel.setText(e.getMessage());
+        } catch (MatriculaSemOitoDigitosException e) {
+            mensagemJLabel.setText(e.getMessage());
         } catch (ParseException pe) {
             mensagemJLabel.setText("Formato da data inválido.");
         }

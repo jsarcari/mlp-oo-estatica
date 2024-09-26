@@ -44,7 +44,10 @@ public class Pessoa {
     }
     
     public final void setDt_nascimento(String dt_nascimento) throws ParseException{
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");        
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        if (df.parse(dt_nascimento).after(new Date())) {
+            throw new DataMaiorQueAtualException("Data de nascimento maior que a data atual");
+        }
         this.setDt_nascimento(df.parse(dt_nascimento)); // converte a data digitada para um objeto date e passa para a pessoa        
     }
     

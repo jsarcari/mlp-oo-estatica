@@ -1,6 +1,9 @@
 package main.java.tipagemestatica;
 
+import java.util.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,6 +13,7 @@ public class Aluno extends Pessoa {
 
     private String matricula;
     private NIVEL nivel;
+    private Date dt_matricula;
 
     public Aluno() {
         this.nivel = NIVEL.INDEFINIDO;
@@ -25,6 +29,7 @@ public class Aluno extends Pessoa {
                 .append(String.format("\n\tSexo: %s", this.getGenero()))
                 .append(String.format("\n\tMatricula: %s", this.getMatricula()))
                 .append(String.format("\n\tNivel: %s", this.getNivel()))
+                .append(String.format("\n\tData da matrícula: %s", DateFormat.getDateInstance(DateFormat.SHORT).format(this.getDt_matricula())))
                 .append("\n}");
         return resultado.toString();
     }
@@ -59,5 +64,24 @@ public class Aluno extends Pessoa {
 
     public final NIVEL getNivel() {
         return nivel;
+    }
+
+    public final void setDt_matricula(Date dt_matricula) {
+        this.dt_matricula = dt_matricula;
+    }
+
+    public final void setDt_matricula(String dt_matricula) throws ParseException {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        if (df.parse(dt_matricula).after(new Date())) {
+            throw new DataException("Data de matricula maior que a data atual");
+        }
+        if (df.parse(dt_matricula).before(getDt_nascimento())) {
+            throw new DataException("Data de matricula menor que a data de nascimento");
+        }
+        this.setDt_matricula(df.parse(dt_matricula)); // converte a data digitada para um objeto date e passa para a pessoa
+    }
+
+    public final Date getDt_matricula() {
+        return (Date)dt_matricula.clone();
     }
 }

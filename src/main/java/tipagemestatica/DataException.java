@@ -1,9 +1,9 @@
 package main.java.tipagemestatica;
 
-public class DataMaiorQueAtualException extends RuntimeException {
+public class DataException extends RuntimeException {
     private String mensagem;
 
-    public DataMaiorQueAtualException(String mensagem) {
+    public DataException(String mensagem) {
         this.mensagem = mensagem;
     }
 

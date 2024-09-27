@@ -25,9 +25,10 @@ public class Action {
             aluno.setGenero(listField.get(1).getText());
             aluno.setMatricula(listField.get(3).getText());
             aluno.setNivel(listField.get(4).getText());
+            aluno.setDt_matricula(listField.get(5).getText());
             alunos.add(aluno);
             limparActionPerformed(evt, listField, mensagemJLabel);
-        } catch (DataMaiorQueAtualException e) {
+        } catch (DataException e) {
             mensagemJLabel.setText(e.getMessage());
         } catch (MatriculaSemOitoDigitosException e) {
             mensagemJLabel.setText(e.getMessage());

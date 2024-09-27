@@ -33,6 +33,9 @@ public class Interface extends JFrame {
         nivelTextField = new JTextField();
         listField.add(nivelTextField);
         nivelLabel = new JLabel();
+        dataMatriculaTextField = new JTextField();
+        listField.add(dataMatriculaTextField);
+        dataMatriculaLabel = new JLabel();
         cadastrarButton = new JButton();
         mensagemLabel = new JLabel();
 
@@ -50,6 +53,7 @@ public class Interface extends JFrame {
         nascimentoLabel.setText("Data de nascimento (dd/mm/aaaa)");
         matriculaLabel.setText("Código de matrícula");
         nivelLabel.setText("Nível");
+        dataMatriculaLabel.setText("Data da matrícula (dd/mm/aaaa)");
         cadastrarButton.setText("Cadastrar");
         mensagemLabel.setText("");
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,13 +90,17 @@ public class Interface extends JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nivelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(dataMatriculaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(cadastrarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mensagemLabel)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {nomeTextField, generoTextField, nascimentoTextField, matriculaTextField, nivelTextField, cadastrarButton});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {nomeTextField, generoTextField, nascimentoTextField, matriculaTextField, nivelTextField, dataMatriculaTextField, cadastrarButton});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,6 +127,10 @@ public class Interface extends JFrame {
                     .addComponent(nivelLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataMatriculaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarButton)
                     .addComponent(mensagemLabel))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -126,7 +138,7 @@ public class Interface extends JFrame {
 
     }
 
-    private javax.swing.JLabel nomeLabel, generoLabel, nascimentoLabel, matriculaLabel, nivelLabel, mensagemLabel;
+    private javax.swing.JLabel nomeLabel, generoLabel, nascimentoLabel, matriculaLabel, nivelLabel, mensagemLabel, dataMatriculaLabel;
     private javax.swing.JButton cadastrarButton;
-    private javax.swing.JTextField nomeTextField, generoTextField, nascimentoTextField, matriculaTextField, nivelTextField;
+    private javax.swing.JTextField nomeTextField, generoTextField, nascimentoTextField, matriculaTextField, nivelTextField, dataMatriculaTextField;
 }

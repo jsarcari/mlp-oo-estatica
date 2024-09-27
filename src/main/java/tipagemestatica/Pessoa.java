@@ -43,18 +43,12 @@ public class Pessoa {
         this.dt_nascimento = dt_nascimento;
     }
     
-    public final void setDt_nascimento(String dt_nascimento) throws ParseException{
+    public final void setDt_nascimento(String dt_nascimento) throws ParseException {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         if (df.parse(dt_nascimento).after(new Date())) {
-            throw new DataMaiorQueAtualException("Data de nascimento maior que a data atual");
+            throw new DataException("Data de nascimento maior que a data atual");
         }
         this.setDt_nascimento(df.parse(dt_nascimento)); // converte a data digitada para um objeto date e passa para a pessoa        
-    }
-    
-    public final void setDt_nascimento(int dd, int mm, int yyyy){
-        Calendar c = Calendar.getInstance();
-        c.set(yyyy, mm, dd);
-        this.dt_nascimento.setTime(c.getTimeInMillis());		
     }
     
     public final Date getDt_nascimento() {

@@ -1,4 +1,4 @@
-package main.java.tipagemestatica;
+package main.java.tipagemestatica.modelos;
 
 import java.util.Date;
 import java.text.DateFormat;
@@ -6,6 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import main.java.tipagemestatica.excessoes.DataException;
+import main.java.tipagemestatica.excessoes.MatriculaSemOitoDigitosException;
 
 public class Aluno extends Pessoa {
     
@@ -18,6 +21,7 @@ public class Aluno extends Pessoa {
     public Aluno() {
         this.nivel = NIVEL.INDEFINIDO;
         this.matricula = "<Indefinida>";
+        this.dt_matricula = new Date();
     }
 
     @Override

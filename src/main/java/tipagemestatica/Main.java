@@ -2,6 +2,8 @@ package main.java.tipagemestatica;
 
 import javax.swing.JFrame;
 
+import main.java.tipagemestatica.formulario.Interface;
+
 public class Main extends JFrame {
     
 

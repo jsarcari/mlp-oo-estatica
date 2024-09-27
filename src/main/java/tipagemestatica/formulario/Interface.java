@@ -1,11 +1,10 @@
-package main.java.tipagemestatica;
+package main.java.tipagemestatica.formulario;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
 import javax.swing.GroupLayout;
 
 public class Interface extends JFrame {
@@ -41,7 +40,7 @@ public class Interface extends JFrame {
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
-                action.printAlunos();
+                action.gravarAlunos();
                 System.exit(0);
             }
         });

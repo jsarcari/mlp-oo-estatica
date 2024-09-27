@@ -1,10 +1,19 @@
-package main.java.tipagemestatica;
+package main.java.tipagemestatica.formulario;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import com.google.gson.*;
+
+import main.java.tipagemestatica.excessoes.DataException;
+import main.java.tipagemestatica.excessoes.MatriculaSemOitoDigitosException;
+import main.java.tipagemestatica.modelos.Aluno;
 
 public class Action {
 
@@ -37,9 +46,14 @@ public class Action {
         }
     }
 
-    public void printAlunos() {
-        for (Aluno a : alunos) {
-            System.out.println(a);
+    public void gravarAlunos() {
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter escrita = new FileWriter("alunos.json");
+            escrita.write(gson.toJson(alunos));
+            escrita.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     

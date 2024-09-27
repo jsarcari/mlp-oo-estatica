@@ -1,6 +1,9 @@
-package main.java.tipagemestatica;
+package main.java.tipagemestatica.modelos;
 
 import java.util.Date;
+
+import main.java.tipagemestatica.excessoes.DataException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

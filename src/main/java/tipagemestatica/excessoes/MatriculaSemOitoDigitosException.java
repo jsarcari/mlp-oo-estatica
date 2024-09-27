@@ -1,4 +1,4 @@
-package main.java.tipagemestatica;
+package main.java.tipagemestatica.excessoes;
 
 public class MatriculaSemOitoDigitosException extends RuntimeException {
     private String mensagem;
